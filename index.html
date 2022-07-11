@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap-grid.css' integrity='sha512-pM/iUb80UpXwRGB2/UbpFDyPtO31IE5aokTh7sYjpSY06pH3j0hXCNXGkyRn8gVod9Cbo4GdP/n98rfu6JC75Q==' crossorigin='anonymous' />
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.css' integrity='sha512-c9N/Xq0n4rQdyCXF4RgrRYAAOSnNJDp8NWILsSUx+33zWyaMbXXvqajgO0UXybRdTGVpxq3FBrcGwabkWsT8OA==' crossorigin='anonymous' />
+    <link rel="stylesheet" href="public/css/app.css">
+    <title>搜尋與即時關鍵字反白</title>
+</head>
+
+<body>
+    <div id="app" class="container mt-4">
+        <div class="row">
+            <label for="">
+                關鍵字
+                <input type="text" v-model="filter">
+            </label>
+        </div>
+        <h3 class="my-3">共有{{filter_post.length}}篇文章</h3>
+        <div class="row">
+            <postbox :post="p" v-for="p in filter_post"></postbox>
+        </div>
+    </div>
+
+    <template id="post">
+        <div class="postbox col-lg-4">
+            <div class="postbox_inner">
+                <div class="img" :src="cover_url" :style="cover_css"></div>
+                <h6 v-html="post.name_short"></h6>
+                <h4 v-html="post.title"></h4>
+                <p v-html="post.description">}</p>
+                <!-- <p>{{cover_url}}</p> -->
+            </div>
+        </div>
+
+    </template>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js' integrity='sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==' crossorigin='anonymous'></script>
+    <script src="src/app.js"></script>
+</body>
+
+</html>
